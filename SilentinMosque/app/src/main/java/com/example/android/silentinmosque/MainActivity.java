@@ -19,9 +19,10 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
-    public static int beaconMajor = 30703;
-    public static int beaconMinor = 24375;
+    public static String beaconUUID;
+    public static int beaconMajor;
+    public static int beaconMinor;
+    public static String beaconNameAddress;
     Handler mHandler = new Handler();
 
     @Override
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         TextView TextView = (TextView) findViewById(R.id.DATE);
         String Date = DateFormat.getDateTimeInstance().format(new Date());
         TextView.setText(Date);
+
+        beaconUUID = getPreferences(MODE_PRIVATE).getString("UUID", "B9407F30-F5F8-466E-AFF9-25556B57FE6D");
+        beaconMajor = getPreferences(MODE_PRIVATE).getInt("Major", 30703);
+        beaconMinor = getPreferences(MODE_PRIVATE).getInt("Minor", 24375);
+        beaconNameAddress = getPreferences(MODE_PRIVATE).getString("NameAddress", "MOSQUE UTHMAN, 1930, Zaventem, Belgium");
 
         new Thread(new Runnable() {
             @Override
@@ -89,9 +95,14 @@ public class MainActivity extends AppCompatActivity {
     public void changeLayout() {
         if (MyApplication.isFound) {
             setContentView(R.layout.my_application);
+            //update date
             TextView TextView = (TextView) findViewById(R.id.atDATE);
             String Date = DateFormat.getDateTimeInstance().format(new Date());
             TextView.setText(Date);
+
+            //update Mosque
+            TextView MosqueName = (TextView) findViewById(R.id.textMosque);
+            MosqueName.setText(beaconNameAddress);
 
         } else {
             setContentView(R.layout.activity_main);
@@ -117,15 +128,16 @@ public class MainActivity extends AppCompatActivity {
         final EditText editTextUUID = (EditText) promptView.findViewById(R.id.editTextDialogUUID);
         final EditText editTextMajor = (EditText) promptView.findViewById(R.id.editTextDialogMajor);
         final EditText editTextMinor = (EditText) promptView.findViewById(R.id.editTextDialogMinor);
+        final EditText editTextMosqueAddress = (EditText) promptView.findViewById(R.id.editTextDialogMosqueAddress);
 
 
         alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        beaconUUID = editTextUUID.getText().toString();
-                        beaconMajor = Integer.parseInt(editTextMajor.getText().toString());
-                        beaconMinor = Integer.parseInt(editTextMinor.getText().toString());
-
+                        getPreferences(MODE_PRIVATE).edit().putString("UUID", editTextUUID.getText().toString()).commit();
+                        getPreferences(MODE_PRIVATE).edit().putInt("Major", Integer.parseInt((editTextMajor.getText().toString()))).commit();
+                        getPreferences(MODE_PRIVATE).edit().putInt("Minor", Integer.parseInt((editTextMinor.getText().toString()))).commit();
+                        getPreferences(MODE_PRIVATE).edit().putString("NameAddress", editTextMosqueAddress.getText().toString()).commit();
 
                     }
                 })

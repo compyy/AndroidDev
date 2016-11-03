@@ -50,5 +50,19 @@
         android:inputType="number"
         android:singleLine="true" />
 
+    <TextView
+        android:id="@+id/textMosqueAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Mosque Name, Address"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/editTextDialogMosqueAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:singleLine="false" />
+
 
 </LinearLayout>

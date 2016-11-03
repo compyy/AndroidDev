@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Silent in Mosque</string>
+    <string name="beacon_uuid">B9407F30-F5F8-466E-AFF9-25556B57FE6D</string>
+    <string name="beacon_major">30703</string>
+    <string name="beacon_minor">24375</string>
+    <string name="mosque_address">MOSQUE UTHMAN, 1930, Zaventem, Belgium</string>
+    <string name="default_date">1st January, 1984</string>
 </resources>
