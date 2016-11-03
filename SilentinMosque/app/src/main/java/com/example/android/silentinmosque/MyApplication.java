@@ -46,8 +46,8 @@ public class MyApplication extends Application {
             public void onServiceReady() {
                 beaconManager.startMonitoring(new Region(
                         "monitored region",
-                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
-                        30703, 24375));
+                        UUID.fromString(MainActivity.beaconUUID),
+                        MainActivity.beaconMajor, MainActivity.beaconMinor));
             }
         });
     }
@@ -58,7 +58,7 @@ public class MyApplication extends Application {
         PendingIntent pendingIntent = PendingIntent.getActivities(this, 0,
                 new Intent[]{notifyIntent}, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setSmallIcon(R.drawable.notification)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)

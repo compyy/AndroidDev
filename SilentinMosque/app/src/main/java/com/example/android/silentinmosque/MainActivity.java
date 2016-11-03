@@ -1,8 +1,15 @@
 package com.example.android.silentinmosque;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.estimote.sdk.SystemRequirementsChecker;
@@ -12,6 +19,9 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+    public static int beaconMajor = 30703;
+    public static int beaconMinor = 24375;
     Handler mHandler = new Handler();
 
     @Override
@@ -44,6 +54,29 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        if (id == R.id.enterData) {
+
+            updateBeacon();
+            return true;
+        }
+        if (id == R.id.appExit) {
+            appExit();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -68,4 +101,40 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    public void appExit() {
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
+
+    public void updateBeacon() {
+        LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
+        View promptView = layoutInflater.inflate(R.layout.prompts, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        alertDialogBuilder.setView(promptView);
+
+        final EditText editTextUUID = (EditText) promptView.findViewById(R.id.editTextDialogUUID);
+        final EditText editTextMajor = (EditText) promptView.findViewById(R.id.editTextDialogMajor);
+        final EditText editTextMinor = (EditText) promptView.findViewById(R.id.editTextDialogMinor);
+
+
+        alertDialogBuilder.setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //resultText.setText("Hello, " + editText.getText());
+                    }
+                })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+
 }
