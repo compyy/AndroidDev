@@ -122,7 +122,11 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //resultText.setText("Hello, " + editText.getText());
+                        beaconUUID = editTextUUID.getText().toString();
+                        beaconMajor = Integer.parseInt(editTextMajor.getText().toString());
+                        beaconMinor = Integer.parseInt(editTextMinor.getText().toString());
+
+
                     }
                 })
                 .setNegativeButton("Cancel",
