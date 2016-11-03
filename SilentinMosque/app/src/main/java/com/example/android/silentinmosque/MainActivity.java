@@ -109,6 +109,16 @@ public class MainActivity extends AppCompatActivity {
             TextView TextView = (TextView) findViewById(R.id.DATE);
             String Date = DateFormat.getDateTimeInstance().format(new Date());
             TextView.setText(Date);
+
+            TextView TextUUI = (TextView) findViewById(R.id.debug_uuid);
+            TextUUI.setText(beaconUUID);
+
+            TextView TextMajor = (TextView) findViewById(R.id.debug_major);
+            TextMajor.setText(Integer.toString(beaconMajor));
+
+            TextView TextMinor = (TextView) findViewById(R.id.debug_minor);
+            TextMinor.setText(Integer.toString(beaconMinor));
+
         }
 
     }
