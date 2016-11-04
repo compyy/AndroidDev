@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:selectAllOnFocus="true"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:text="B9407F30-F5F8-466E-AFF9-25556B57FE6D" />
 
     <TextView
         android:id="@+id/textMajor"
@@ -33,7 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:text="30703" />
 
 
     <TextView
@@ -48,7 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:text="24375" />
 
     <TextView
         android:id="@+id/textMosqueAddress"
@@ -59,10 +62,11 @@
 
     <EditText
         android:id="@+id/editTextDialogMosqueAddress"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:singleLine="false" />
+        android:singleLine="false"
+        android:text="MOSQUE UTHMAN, 1930, Zaventem, Belgium" />
 
 
 </LinearLayout>
