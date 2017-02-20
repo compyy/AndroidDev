@@ -24,7 +24,7 @@ public class MyApplication extends Application {
         super.onCreate();
 
         beaconManager = new BeaconManager(getApplicationContext());
-        beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
+        beaconManager. setMonitoringListener(new BeaconManager.MonitoringListener() {
             @Override
             public void onEnteredRegion(Region region, List<Beacon> list) {
 

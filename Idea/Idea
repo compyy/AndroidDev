@@ -1,0 +1,23 @@
+Main Idea:
+Silent Profile on Beacon
+Prayers time
+
+
+Layout Design:
+	Main Activity
+		App Title 
+			Background Image <ImageView>
+			Prayers Title <TextView>
+			Date & Location <TextView>
+			Prayers time <TextView>
+	
+	Beacon Activity
+		App Title
+			Beacon In range <ImageView + TextView>
+			Profile Active <TextView>
+			Mosque Information <ButtonView>
+	
+	Mosque Activity
+		App Title
+			Mosque Information <TextView>
+		

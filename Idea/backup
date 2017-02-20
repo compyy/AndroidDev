@@ -1,0 +1,42 @@
+Phone is in Silent Mode now
+Belgium
+MOSQUE UTHMAN, 1930, Zaventem
+You are Checked-in
+
+
+
+    public void setFound(){
+        TextView CheckedinTextView = (TextView) findViewById(R.id.textCheckedIn);
+        CheckedinTextView.setText("You are Checked-in");
+
+        TextView MosqueTextView = (TextView) findViewById(R.id.textMosque);
+        MosqueTextView.setText("MOSQUE UTHMAN, 1930, Zaventem");
+
+        TextView BelgiumTextView = (TextView) findViewById(R.id.textBelgium);
+        BelgiumTextView.setText("Belgium");
+
+        TextView SilentinTextView = (TextView) findViewById(R.id.textSilent);
+        SilentinTextView.setText("Phone is in Silent Mode now");
+
+        TextView LocateTextView = (TextView) findViewById(R.id.textLocating);
+        LocateTextView.setText("");
+
+    }
+
+    public void unSetFound(){
+        TextView CheckedinTextView = (TextView) findViewById(R.id.textCheckedIn);
+        CheckedinTextView.setText("");
+
+        TextView MosqueTextView = (TextView) findViewById(R.id.textMosque);
+        MosqueTextView.setText("");
+
+        TextView BelgiumTextView = (TextView) findViewById(R.id.textBelgium);
+        BelgiumTextView.setText("");
+
+        TextView SilentinTextView = (TextView) findViewById(R.id.textSilent);
+        SilentinTextView.setText("");
+
+        TextView LocateTextView = (TextView) findViewById(R.id.textLocating);
+        LocateTextView.setText("Locating Mosque..");
+
+    }
