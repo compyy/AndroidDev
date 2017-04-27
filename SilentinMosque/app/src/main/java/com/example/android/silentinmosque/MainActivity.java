@@ -12,7 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.estimote.sdk.SystemRequirementsChecker;
+
+import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 
 import java.text.DateFormat;
 import java.util.Date;

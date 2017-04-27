@@ -8,12 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 
-import com.estimote.sdk.Beacon;
-import com.estimote.sdk.BeaconManager;
-import com.estimote.sdk.Region;
+import com.estimote.coresdk.observation.region.beacon.BeaconRegion;
+import com.estimote.coresdk.recognition.packets.Beacon;
+import com.estimote.coresdk.service.BeaconManager;
 
 import java.util.List;
 import java.util.UUID;
+
 
 public class MyApplication extends Application {
     public static Boolean isFound = false;
@@ -24,9 +25,9 @@ public class MyApplication extends Application {
         super.onCreate();
 
         beaconManager = new BeaconManager(getApplicationContext());
-        beaconManager. setMonitoringListener(new BeaconManager.MonitoringListener() {
+        beaconManager. setMonitoringListener(new BeaconManager.BeaconMonitoringListener() {
             @Override
-            public void onEnteredRegion(Region region, List<Beacon> list) {
+            public void onEnteredRegion(BeaconRegion region, List<Beacon> list) {
 
                 showNotification("Checked-in", "You have checked-in Mosque Uthman, Your phone will be Silent now.");
                 enableSilent();
@@ -34,7 +35,7 @@ public class MyApplication extends Application {
             }
 
             @Override
-            public void onExitedRegion(Region region) {
+            public void onExitedRegion(BeaconRegion region) {
                 showNotification("Checked-Out", "You have checked-out Mosque Uthman, Your phone will exit Silent Mode.");
                 enableRinger();
                 isFound = false;
@@ -44,7 +45,7 @@ public class MyApplication extends Application {
         beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
             @Override
             public void onServiceReady() {
-                beaconManager.startMonitoring(new Region(
+                beaconManager.startMonitoring(new BeaconRegion(
                         "monitored region",
                         UUID.fromString(MainActivity.beaconUUID),
                         MainActivity.beaconMajor, MainActivity.beaconMinor));
